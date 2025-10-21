@@ -2,29 +2,39 @@
 
 int main() {
     float temperature_C, temperature_F, temperature_K;
+    float temperature = 0;
     char scale, target;
     
     printf("Enter the temperature value: ");
-    scanf("%f", &temperature_C);
+    scanf("%f", &temperature);
     printf("Enter the original scale (C, F, or K): ");
     scanf(" %c", &scale);
-    printf("Enter the scale to convert to (C, F, or K): ");
-    scanf(" %c", &target);
 
     switch (scale) {
         case 'C':
-            temperature_F = temperature_C * 9/5 + 32;
-            temperature_K = temperature_C + 273.15;
+            temperature_C = temperature;
+            temperature_F = temperature * 9/5 + 32;
+            temperature_K = temperature + 273.15;
             break;
         case 'F':
-            temperature_C = (temperature_C - 32) * 5/9;
-            temperature_K = (temperature_C - 32) * 5/9 + 273.15;
+            temperature_F = temperature;
+            temperature_C = (temperature - 32) * 5/9;
+            temperature_K = (temperature - 32) * 5/9 + 273.15;
             break;
         case 'K':
-            temperature_C = temperature_C - 273.15;
-            temperature_F = (temperature_C - 273.15) * 9/5 + 32;
+            temperature_K = temperature;
+            temperature_C = temperature - 273.15;
+            temperature_F = (temperature - 273.15) * 9/5 + 32;
             break;
+        }
+    
+    if (temperature_K < 0) {
+        printf("Invalid temperature in Kelvin scale, Try again!\n");
+        main();
     }
+    
+    printf("Enter the scale to convert to (C, F, or K): ");
+    scanf(" %c", &target);
 
     switch (target) {
         case 'C':
