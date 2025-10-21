@@ -26,6 +26,9 @@ int main() {
             temperature_C = temperature - 273.15;
             temperature_F = (temperature - 273.15) * 9/5 + 32;
             break;
+        default:
+            printf("Invalid scale, Try again!\n");
+            main();
         }
     
     if (temperature_K < 0) {
@@ -46,6 +49,9 @@ int main() {
         case 'K':
             printf("Converted temperature: %f %c", temperature_K, target);
             break;
+        default:
+            printf("Invalid target scale, Try again!\n");
+            main();
     }
 
     if (temperature_C < 0) {
